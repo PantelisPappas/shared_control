@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<node pkg="arbimodel_package" type="arbitrator_inferenceNetwork_node.py" name="arbitrator_inferenceNetwork_node" output="screen"/>
+
+</launch>
