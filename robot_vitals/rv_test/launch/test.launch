@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<launch>
+	
+	<!-- parameters for the husky packages e.g. for husky description -->
+	<arg name="laser_enabled" default="true"/>
+	<arg name="realsense_enabled" default="true"/>
+	<arg name="urdf_extras" default=""/>
+
+	<!-- spawning coordinates in gazebo -->
+	<arg name="x" default="-8.0"/>
+	<arg name="y" default="0.5"/>
+	<arg name="z" default="0.00"/>
+	<arg name="yaw" default="0.00"/>
+	<!-- <arg name="world_name" default="/home/dante/ros_workspaces/robotVitals/GazeboWorlds/test.world"/> -->
+	<arg name="world_name" default="/home/dante/ros_workspaces/robotVitals/GazeboWorlds/unit_hard.world"/>
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(arg world_name)"/> <!-- world_name is wrt GAZEBO_RESOURCE_PATH environment variable -->
+		<arg name="paused" value="false"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="gui" value="true"/>
+		<arg name="headless" value="false"/>
+		<arg name="debug" value="false"/>
+	</include>
+
+	<include file="$(find husky_gazebo)/launch/spawn_husky.launch">
+		<arg name="laser_enabled" value="$(arg laser_enabled)"/>
+		<arg name="realsense_enabled" value="$(arg realsense_enabled)"/>
+		<arg name="urdf_extras" value="$(arg urdf_extras)"/>
+		<arg name="x" value="$(arg x)"/>
+		<arg name="y" value="$(arg y)"/>
+		<arg name="z" value="$(arg z)"/>
+		<arg name="yaw" value="$(arg yaw)"/>
+	</include>
+
+
+
+</launch>
